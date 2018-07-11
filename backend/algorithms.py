@@ -1,4 +1,7 @@
 import logging
+import datetime
+import pandas as pd
+
 def get_month_day_range(date):
     """
     For a date 'date' returns the start and end date for the month of 'date'.
@@ -17,6 +20,19 @@ def get_month_day_range(date):
     first_day = date.replace(day=1)
     last_day = date.replace(day=calendar.monthrange(date.year, date.month)[1])
     return first_day, last_day
+
+
+def get_dummy_data():
+    """Returns a list of dictionaries for the dates in the current month."""
+    start, end = get_month_day_range(datetime.date.today())
+    date = start
+    data = []
+    while date <= end:
+        this_row = data_row = {"training": [], "travel": [],
+                                "date": date.isoformat()}
+        data.append(this_row)
+    return data
+
 
 def get_denormalized_calendar(file_path):
     """
@@ -40,8 +56,7 @@ def get_denormalized_calendar(file_path):
         }
     ]
     """
-    import pandas as pd
-    import datetime
+    
     training = pd.read_excel(file_path, sheet_name="training")
     travel = pd.read_excel(file_path, sheet_name="travel")
     start, end = get_month_day_range(datetime.date.today())

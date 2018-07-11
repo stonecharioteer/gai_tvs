@@ -30,13 +30,13 @@ def serve_calendar_data():
     ]
     """
     if os.environ.get("GAI_CALENDAR") is None:
-        return {}
+        return jsonify(algorithms.get_dummy_data())
     else:
         if os.path.isfile(os.environ["GAI_CALENDAR"]):
             data = algorithms.get_denormalized_calendar(os.environ["GAI_CALENDAR"])
             return jsonify(data)
         else:
-            return {}
+            return jsonify(algorithms.get_dummy_data())
 
 if __name__ == "__main__":
     # NOTE Preferably run this using gunicorn.
