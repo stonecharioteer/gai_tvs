@@ -61,9 +61,13 @@ def get_denormalized_calendar(file_path):
         }
     ]
     '''
-    
-    training = pd.read_excel(file_path, sheet_name='training')
-    travel = pd.read_excel(file_path, sheet_name='travel')
+    if float(pd.__version__[:pd.rfind(".")]) >= 0.21:
+        training = pd.read_excel(file_path, sheet_name='training')
+        travel = pd.read_excel(file_path, sheet_name='travel')
+    else:
+        # The argument sheetname was deprecated from pandas version 0.21.0
+        training = pd.read_excel(file_path, sheetname='training')
+        travel = pd.read_excel(file_path, sheetname='travel')
     start, end = get_month_day_range(datetime.date.today())
     date = start
     data = {
