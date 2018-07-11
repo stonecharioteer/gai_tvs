@@ -1,11 +1,12 @@
 import os
 import datetime
 from flask import Flask, jsonify
+from flask_cors import CORS
 import pandas as pd
 import algorithms
 
 application = Flask(__name__)
-
+CORS(application)
 @application.route("/calendar")
 def serve_calendar_data():
     """
