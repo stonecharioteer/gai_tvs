@@ -61,7 +61,7 @@ def get_denormalized_calendar(file_path):
         }
     ]
     '''
-    if float(pd.__version__[:pd.rfind(".")]) >= 0.21:
+    if float(pd.__version__[:pd.__version__.rfind(".")]) >= 0.21:
         training = pd.read_excel(file_path, sheet_name='training')
         travel = pd.read_excel(file_path, sheet_name='travel')
     else:
