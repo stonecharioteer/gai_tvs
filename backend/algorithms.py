@@ -64,10 +64,14 @@ def get_denormalized_calendar(file_path):
     if float(pd.__version__[:pd.__version__.rfind(".")]) >= 0.21:
         training = pd.read_excel(file_path, sheet_name='training')
         travel = pd.read_excel(file_path, sheet_name='travel')
+        events = pd.read_excel(file_path, sheet_name='events')
+        birthdays = pd.read_excel(file_path, sheet_name='birthdays')
     else:
         # The argument sheetname was deprecated from pandas version 0.21.0
         training = pd.read_excel(file_path, sheetname='training')
         travel = pd.read_excel(file_path, sheetname='travel')
+        events = pd.read_excel(file_path, sheet_name='events')
+        birthdays = pd.read_excel(file_path, sheet_name='birthdays')
     start, end = get_month_day_range(datetime.date.today())
     date = start
     data = {
@@ -82,7 +86,7 @@ def get_denormalized_calendar(file_path):
         training_condition = [(x and y) for x, y in zip(
             start_date_condition, end_date_condition)]
         training_df = training.loc[training_condition]
-        data_row = {'training': [], 'travel': [],
+        data_row = {'training': [], 'travel': [], "events": [], "birthdays": [],
                     'date': date.isoformat()}
         for ix, row in training_df.iterrows():
             this_row = {
@@ -120,6 +124,37 @@ def get_denormalized_calendar(file_path):
                 elif row['End Time'].date() == date:
                     this_row['type'] = 'VISITOR_DEPARTURE'
             data_row['travel'].append(this_row)
+
+        # Denormalize events information from the excel file.
+        start_date_condition = [x.date() == date for x in events['Start Time']]
+        end_date_condition = [x.date() == date for x in events['End Time']]
+        events_condition = [(x or y) for x, y in zip(
+            start_date_condition, end_date_condition)]
+        events_df = events.loc[events_condition]
+        for ix, row in events_df.iterrows():
+            this_row = {
+                'title': row['Title'],
+            }
+            if row['Start Time'].date() == date:
+                this_row['time'] = row['Start Time'].time().isoformat()
+            elif row['End Time'].date() == date:
+                this_row['time'] = row['End Time'].time().isoformat()
+            data_row['events'].append(this_row)
+
+        # Denormalize birthdays information from the excel file.
+        birthdays_condition = [
+            (
+                x.date().month == date.month
+            ) and (
+                x.date().day == date.day
+                ) for x in birthdays['Date of Birth']
+            ]
+        birthdays_df = birthdays.loc[birthdays_condition]
+        for ix, row in birthdays_df.iterrows():
+            this_row = {
+                'name': row['Name'],
+            }
+            data_row['birthdays'].append(this_row)
 
         data["data"].append(data_row)
         date += datetime.timedelta(days=1)

@@ -70,13 +70,19 @@
             {{get_date(date_entry['date']) }}
           </button>
             <div class="calendar-events">
-
               <a class="calendar-event" v-for="event in date_entry['travel']" :key="event.name" v-bind:class="get_travel_class(event['type'])">
                 <i class="fa fa-fw" v-bind:class="get_travel_icon(event['type'])"></i>
                 {{ event['name'] }}
                 </a>
               <a class="calendar-event is-black" v-for="event in date_entry['training']" :key="event.title">
-                <i class="fa fa-graduation-cap fa-fw"></i>{{ event['title'] }}</a>
+                <i class="fa fa-graduation-cap fa-fw"></i>
+                {{ event['title'] }}</a>
+              <a class="calendar-event is-primary" v-for="event in date_entry['events']" :key="event.title">
+                <i class="fa fa-calendar-plus-o fa-fw"></i>
+                {{ event['title'] }}</a>
+              <a class="calendar-event is-link" v-for="event in date_entry['birthdays']" :key="event.name">
+                <i class="fa fa-birthday-cake fa-fw"></i>
+                {{ event['name'] }}</a>
             </div>
         </div>
       </div>
