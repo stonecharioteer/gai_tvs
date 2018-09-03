@@ -1,0 +1,111 @@
+@charset "utf-8";
+// @import "../node_modules/bulma/bulma.sass";
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+$gkn-silver-blue: #336699;
+$gkn-silver-blue-70: #7094B7;
+$gkn-silver-blue-40: #ADC2D6;
+$gkn-silver-blue-10: #EAEFF5;
+
+$gkn-yellow-gold: #FFCC33;
+$gkn-yellow-gold-70: #FED96A;
+$gkn-yellow-gold-40: #FEE6A1;
+$gkn-yellow-gold-10: #FDF4D7;
+
+$gkn-black: #000000;
+$gkn-black-70: #4C4C4C;
+$gkn-black-40: #999999;
+$gkn-black-10: #E5E5E5;
+
+
+$gkn-grey: #A4A4A8;
+$gkn-grey-70: #BFBFC2;
+$gkn-grey-40: #DBDBDC;
+$gkn-grey-10: #F6F6F6;
+
+$gkn-red: #990033;
+$gkn-red-70: #B74C70;
+$gkn-red-40: #D699AD;
+$gkn-red-10: #F4E5EA;
+
+$gkn-green: #006666;
+$gkn-green-70: #4C9393;
+$gkn-green-40: #99C1C1;
+$gkn-green-10: #E5EFEF;
+
+$gkn-purple: #330066;
+$gkn-purple-70: #704C93;
+$gkn-purple-40: #AD99C1;
+$gkn-purple-10: #EAE5EF;
+
+$gkn-red-secondary: #C22A22;
+$gkn-red-secondary-70: #D46964;
+$gkn-red-secondary-40: #E7AAA7;
+$gkn-red-secondary-10: #F9E9E8;
+
+$gkn-green-secondary: #6DAD3C;
+$gkn-green-secondary-70: #99C576;
+$gkn-green-secondary-40: #C5DEB1;
+$gkn-green-secondary-10: #F0F7EB;
+
+$gkn-purple-secondary: #9A2A70;
+$gkn-purple-secondary-70: #B8699B;
+$gkn-purple-secondary-40: #D7AAC6;
+$gkn-purple-secondary-10: #F5E9F0;
+
+$colors: (
+    "white": ($gkn-black-10, $gkn-black),
+    "black": ($gkn-black, $gkn-black-10),
+    "dark": ($gkn-black-70, $gkn-grey-10),
+    "primary": ($gkn-silver-blue, $gkn-silver-blue-10),
+    "link": ($gkn-purple, $gkn-purple-10),
+    "info": ($gkn-purple-secondary, $gkn-purple-secondary-10),
+    "success": ($gkn-green-secondary, $gkn-green),
+    "warning": ($gkn-yellow-gold, $gkn-yellow-gold-10),
+    "danger": ($gkn-red, $gkn-red-10),
+    "gkn-silver-blue": ($gkn-silver-blue, $gkn-silver-blue-10),
+    "gkn-red": ($gkn-red, $gkn-red-10),
+    "gkn-red-secondary": ($gkn-red-secondary, $gkn-red-secondary-10),
+    "gkn-yellow-gold": ($gkn-yellow-gold, $gkn-yellow-gold-10),
+    "gkn-green": ($gkn-green, $gkn-green-10),
+    "gkn-green-secondary": ($gkn-green-secondary, $gkn-green-secondary-10),
+    "gkn-purple": ($gkn-purple, $gkn-purple-10),
+    "gkn-purple-secondary": ($gkn-purple-secondary, $gkn-purple-secondary-10),
+);
+
+
+$calendar-header-color: $gkn-silver-blue;
+$calendar-date-hover: $gkn-green-secondary-40;
+$calendar-today-background: $gkn-green-secondary-70;
+$calendar-today-border-color: $gkn-black-70;
+$calendar-today-color: $gkn-green-70;
+
+// Update Bulma's global variables
+$family-sans-serif: "Nunito", sans-serif;
+$grey-dark: $gkn-black-70;
+$grey-light: $gkn-grey-70;
+$primary: $gkn-silver-blue;
+$link: $gkn-purple;
+$warning: $gkn-red;
+$danger: $gkn-red-secondary-40;
+
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Update some of Bulma's component variables
+$body-background-color: $gkn-grey-10;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+// Import only what you need from Bulma
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+@import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/elements/container.sass";
+@import "../node_modules/bulma/sass/elements/form.sass";
+@import "../node_modules/bulma/sass/elements/title.sass";
+@import "../node_modules/bulma/sass/layout/hero.sass";
+@import "../node_modules/bulma/sass/layout/section.sass";
+@import "../node_modules/bulma-calendar/src/sass/index.sass"

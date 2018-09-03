@@ -1,0 +1,21 @@
+{
+  "name": "gkn-bulma",
+  "version": "1.0.0",
+  "description": "GKN Colors for Bulma",
+  "main": "index.js",
+  "scripts": {
+    "css-build": "node-sass --omit-source-map-url sass/gknbulma.scss css/gknbulma.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch"
+  },
+  "author": "Vinay",
+  "license": "ISC",
+  "devDependencies": {
+    "bulma": "^0.7.1",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0"
+  },
+  "dependencies": {
+    "bulma-calendar": "^4.0.2"
+  }
+}

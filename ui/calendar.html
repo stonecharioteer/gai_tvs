@@ -5,9 +5,12 @@
     <title>Calendar</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="libs/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="libs/bulma.io/bulma.css">
+    <!-- <link rel="stylesheet" href="libs/bulma.io/bulma.css"> -->
+    <link rel="stylesheet" href="css/gknbulma.css">
 
-		<link rel="stylesheet" href="libs/bulma.io/calendar/bulma-calendar.min.css">
+		<!-- <link rel="stylesheet" href="libs/bulma.io/calendar/bulma-calendar.min.css"> -->
+    <link rel="stylesheet" href="css/gknbulma.css">
+    
     <script type="text/javascript" src="libs/bulma.io/calendar/bulma-calendar.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -35,12 +38,19 @@
       height: 100%;
       width: 100%
     }
-
+    .calendar {
+      height: 100%;
+      min-height: 100%;
+    }
     .columns {
       height: 100%;
     }
     .calendar-header .calendar-date {
         font-size: 2rem;
+        font-weight: 1500;
+    }
+    .calendar-header .calendar-month {
+        font-size: 5rem;
         font-weight: 1500;
     }
     .calender-event {
@@ -51,7 +61,7 @@
   <body>
     <div id="calendar" class="calendar is-large">
       <div class="calendar-nav">
-        <div class="calendar-month">{{ month }}</div>
+        <div class="calendar-month">{{ month.toUpperCase() }}</div>
       </div>
       <div class="calendar-container">
         <div class="calendar-header">
@@ -74,7 +84,7 @@
                 <i class="fa fa-fw" v-bind:class="get_travel_icon(event['type'])"></i>
                 {{ event['name'] }}
                 </a>
-              <a class="calendar-event is-black" v-for="event in date_entry['training']" :key="event.title">
+              <a class="calendar-event is-info" v-for="event in date_entry['training']" :key="event.title">
                 <i class="fa fa-graduation-cap fa-fw"></i>
                 {{ event['title'] }}</a>
               <a class="calendar-event is-primary" v-for="event in date_entry['events']" :key="event.title">
@@ -124,7 +134,7 @@
           } else if (t == "VISITOR_DEPARTURE") {
             return "fa-paper-plane"
           } else {
-            return "is-black"
+            return "fa-plane"
           }
         },
         
