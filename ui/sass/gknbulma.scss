@@ -64,8 +64,9 @@ $colors: (
     "success": ($gkn-green-secondary, $gkn-green),
     "warning": ($gkn-yellow-gold, $gkn-black),
     "danger": ($gkn-red, $gkn-red-10),
-    "birthday": ($gkn-green, $gkn-yellow-gold),
+    "birthday": ($gkn-green, $gkn-grey-10),
     "training": ($gkn-purple-secondary, $gkn-purple-secondary-10),
+    "event": ($gkn-purple, $gkn-purple-secondary-10),
     "visitor-arrival": ($gkn-yellow-gold, $gkn-silver-blue),
     "visitor-departure": ($gkn-yellow-gold, $gkn-silver-blue),
     "employee-arrival": ($gkn-silver-blue, $gkn-yellow-gold),
@@ -114,4 +115,5 @@ $input-shadow: none;
 @import "../node_modules/bulma/sass/elements/title.sass";
 @import "../node_modules/bulma/sass/layout/hero.sass";
 @import "../node_modules/bulma/sass/layout/section.sass";
+// Bulma calendar
 @import "../node_modules/bulma-calendar/src/sass/index.sass"

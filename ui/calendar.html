@@ -62,7 +62,7 @@
   <body>
     <div id="calendar" class="calendar is-large">
       <div class="calendar-nav" style="min-height: 5rem; font-size: 4rem">
-        <div class="calendar-month" style="color: #FFCC33; font-family: serif; font-size: 3rem;">{{ month.toUpperCase() }}</div>
+        <div class="calendar-month" style="color: #FFCC33; font-size: 3rem;">{{ month.toUpperCase() }}</div>
       </div>
       <div class="calendar-container">
         <div class="calendar-header">
@@ -81,15 +81,15 @@
             {{get_date(date_entry['date']) }}
           </button>
             <div class="calendar-events">
+              <a class="calendar-event is-primary" v-for="event in date_entry['events']" :key="event.title">
+                <i class="fa fa-calendar-plus-o fa-fw"></i>
+                {{ event['title'] }}</a>
               <a class="calendar-event" v-for="event in date_entry['travel']" :key="event.name" v-bind:class="get_travel_class(event['type'])">
                 <i class="fa fa-fw" v-bind:class="get_travel_icon(event['type'])"></i>
                 {{ event['name'] }}
                 </a>
               <a class="calendar-event is-training" v-for="event in date_entry['training']" :key="event.title">
                 <i class="fa fa-graduation-cap fa-fw"></i>
-                {{ event['title'] }}</a>
-              <a class="calendar-event is-primary" v-for="event in date_entry['events']" :key="event.title">
-                <i class="fa fa-calendar-plus-o fa-fw"></i>
                 {{ event['title'] }}</a>
               <a class="calendar-event is-birthday" v-for="event in date_entry['birthdays']" :key="event.name">
                 <i class="fa fa-birthday-cake fa-fw"></i>
