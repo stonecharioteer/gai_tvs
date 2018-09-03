@@ -49,8 +49,9 @@
         font-size: 2rem;
         font-weight: 1500;
     }
-    .calendar-header .calendar-month {
+    .calendar-header .calendar-nav {
         font-size: 5rem;
+        min-height: 10rem;
         font-weight: 1500;
     }
     .calender-event {
@@ -60,8 +61,8 @@
   </head>
   <body>
     <div id="calendar" class="calendar is-large">
-      <div class="calendar-nav">
-        <div class="calendar-month">{{ month.toUpperCase() }}</div>
+      <div class="calendar-nav" style="min-height: 5rem; font-size: 4rem">
+        <div class="calendar-month" style="color: #FFCC33; font-family: serif; font-size: 3rem;">{{ month.toUpperCase() }}</div>
       </div>
       <div class="calendar-container">
         <div class="calendar-header">
@@ -76,7 +77,7 @@
       </div>
       <div class="calendar-body">
         <div class="calendar-date" v-for="date_entry in calendar_data">
-          <button class="date-item">
+          <button class="date-item" v-bind:class="get_today(date_entry['date'])">
             {{get_date(date_entry['date']) }}
           </button>
             <div class="calendar-events">
@@ -84,13 +85,13 @@
                 <i class="fa fa-fw" v-bind:class="get_travel_icon(event['type'])"></i>
                 {{ event['name'] }}
                 </a>
-              <a class="calendar-event is-info" v-for="event in date_entry['training']" :key="event.title">
+              <a class="calendar-event is-training" v-for="event in date_entry['training']" :key="event.title">
                 <i class="fa fa-graduation-cap fa-fw"></i>
                 {{ event['title'] }}</a>
               <a class="calendar-event is-primary" v-for="event in date_entry['events']" :key="event.title">
                 <i class="fa fa-calendar-plus-o fa-fw"></i>
                 {{ event['title'] }}</a>
-              <a class="calendar-event is-link" v-for="event in date_entry['birthdays']" :key="event.name">
+              <a class="calendar-event is-birthday" v-for="event in date_entry['birthdays']" :key="event.name">
                 <i class="fa fa-birthday-cake fa-fw"></i>
                 {{ event['name'] }}</a>
             </div>
@@ -113,13 +114,13 @@
         },
         get_travel_class(t) {
           if (t == "DEPARTURE") {
-            return "is-danger"
+            return "is-employee-departure"
           } else if (t == "ARRIVAL") {
-            return "is-success"
+            return "is-employee-arrival"
           } else if (t == "VISITOR_ARRIVAL") {
-            return "is-warning"
+            return "is-visitor-arrival"
           } else if (t == "VISITOR_DEPARTURE") {
-            return "is-primary"
+            return "is-visitor-departure"
           } else {
             return "is-black"
           }
@@ -130,14 +131,23 @@
           } else if (t == "ARRIVAL") {
             return "fa-plane fa-rotate-180"
           } else if (t == "VISITOR_ARRIVAL") {
-            return "fa-paper-plane fa-rotate-180"
+            return "fa-plane fa-rotate-180"
           } else if (t == "VISITOR_DEPARTURE") {
-            return "fa-paper-plane"
+            return "fa-plane"
           } else {
             return "fa-plane"
           }
         },
-        
+        get_today(d) {
+          a = new Date(d);
+          t = new Date();
+          
+          if (a.toDateString() == t.toDateString()){
+            return "is-today"
+          } else {
+            return ""
+          }
+        },
         loadAsyncData() {
           var vm = this
           axios.get("http://localhost:9000/calendar")

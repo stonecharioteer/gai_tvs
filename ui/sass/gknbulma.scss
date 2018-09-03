@@ -62,8 +62,14 @@ $colors: (
     "link": ($gkn-purple, $gkn-purple-10),
     "info": ($gkn-purple-secondary, $gkn-purple-secondary-10),
     "success": ($gkn-green-secondary, $gkn-green),
-    "warning": ($gkn-yellow-gold, $gkn-yellow-gold-10),
+    "warning": ($gkn-yellow-gold, $gkn-black),
     "danger": ($gkn-red, $gkn-red-10),
+    "birthday": ($gkn-green, $gkn-yellow-gold),
+    "training": ($gkn-purple-secondary, $gkn-purple-secondary-10),
+    "visitor-arrival": ($gkn-yellow-gold, $gkn-silver-blue),
+    "visitor-departure": ($gkn-yellow-gold, $gkn-silver-blue),
+    "employee-arrival": ($gkn-silver-blue, $gkn-yellow-gold),
+    "employee-departure": ($gkn-silver-blue, $gkn-yellow-gold),
     "gkn-silver-blue": ($gkn-silver-blue, $gkn-silver-blue-10),
     "gkn-red": ($gkn-red, $gkn-red-10),
     "gkn-red-secondary": ($gkn-red-secondary, $gkn-red-secondary-10),
@@ -77,9 +83,9 @@ $colors: (
 
 $calendar-header-color: $gkn-silver-blue;
 $calendar-date-hover: $gkn-green-secondary-40;
-$calendar-today-background: $gkn-green-secondary-70;
-$calendar-today-border-color: $gkn-black-70;
-$calendar-today-color: $gkn-green-70;
+$calendar-today-background: $gkn-yellow-gold;
+$calendar-today-border-color: $gkn-silver-blue;
+$calendar-today-color: $gkn-silver-blue;
 
 // Update Bulma's global variables
 $family-sans-serif: "Nunito", sans-serif;
